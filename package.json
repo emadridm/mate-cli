@@ -1,29 +1,72 @@
 {
   "name": "@mate/mate",
-  "version": "1.0.0",
   "description": "An office mate",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emadridm/mate.git"
-  },
-  "keywords": [
-    "e-mail",
-    "project",
-    "office",
-    "suits",
-    "social",
-    "networks",
-    "colaborations",
-    "teams"
-  ],
+  "version": "1.0.0",
   "author": "Enrique Madrid",
-  "license": "MIT",
+  "bin": {
+    "mate": "./bin/run"
+  },
   "bugs": {
     "url": "https://github.com/emadridm/mate/issues"
   },
-  "homepage": "https://github.com/emadridm/mate#readme"
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/test": "^1.2.8",
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.1",
+    "chai": "^4.3.4",
+    "eslint": "^7.28.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.2.0",
+    "globby": "^11.0.3",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/emadridm/mate#readme",
+  "keywords": [
+    "colaborations",
+    "e-mail",
+    "networks",
+    "office",
+    "project",
+    "social",
+    "suits",
+    "teams"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "mate",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "emadridm/mate",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.2",
+    "tslib": "^2.2.0"
+  }
 }
