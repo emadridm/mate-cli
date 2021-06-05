@@ -28,8 +28,25 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`mate account [FILE]`](#mate-account-file)
 * [`mate hello [FILE]`](#mate-hello-file)
 * [`mate help [COMMAND]`](#mate-help-command)
+
+## `mate account [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ mate account [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/account.ts](https://github.com/emadridm/mate/blob/v1.0.0/src/commands/account.ts)_
 
 ## `mate hello [FILE]`
 
