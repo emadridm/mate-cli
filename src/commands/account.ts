@@ -1,7 +1,8 @@
-import { Command, flags } from '@oclif/command'
+import { Command, flags } from '@oclif/command';
+import * as mate from '../core';
 
 export default class Account extends Command {
-  static description = 'list, create, update, login, logout or delete accounts'
+  static description = 'list, create, update, login, logout or delete accounts';
 
   static flags = {
     help: flags.help({ char: 'h' }),
@@ -11,15 +12,16 @@ export default class Account extends Command {
     force: flags.boolean({ char: 'f' }),
   }
 
-  static args = [{ name: 'file' }]
+  static args = [{ name: 'name' }];
 
   async run() {
-    const { args, flags } = this.parse(Account)
-
-    const name = flags.name ?? 'world'
-    this.log(`hello ${name} from /home/enrique/Projects/mate/src/commands/account.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    const { args, flags } = this.parse(Account);
+    const name = args.name;
+    //   if (name) {
+    //     let settings = mate.cli.GetAppSettings();
+    //     let account = new mate.Account(name);
+    //     account.provider = mate.AccountProvider.Exchange;
+    //     account = mate.Account.create(account);
+    //   }
   }
 }

@@ -28,17 +28,18 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`mate account [FILE]`](#mate-account-file)
+* [`mate account [NAME]`](#mate-account-name)
 * [`mate hello [FILE]`](#mate-hello-file)
 * [`mate help [COMMAND]`](#mate-help-command)
+* [`mate init [FILE]`](#mate-init-file)
 
-## `mate account [FILE]`
+## `mate account [NAME]`
 
-describe the command here
+list, create, update, login, logout or delete accounts
 
 ```
 USAGE
-  $ mate account [FILE]
+  $ mate account [NAME]
 
 OPTIONS
   -f, --force
@@ -84,4 +85,20 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `mate init [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ mate init [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/init.ts](https://github.com/emadridm/mate/blob/v1.0.0/src/commands/init.ts)_
 <!-- commandsstop -->

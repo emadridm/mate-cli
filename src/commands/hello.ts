@@ -17,12 +17,12 @@ hello world from ./src/hello.ts!
     force: flags.boolean({ char: 'f' }),
   }
 
-  static args = [{ name: 'file' }]
+  static args = [{ name: 'file' }];
 
-  async run(): Promise<void> {
+  async run() {
     const { args, flags } = this.parse(Hello)
 
-    const name = flags.name ?? 'world'
+    const name = flags.name ?? 'world';
     this.log(`hello ${name} from ./src/commands/hello.ts`)
     if (args.file && flags.force) {
       this.log(`you input --force and --file: ${args.file}`)
