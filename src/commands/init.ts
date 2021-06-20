@@ -12,9 +12,9 @@ export default class Init extends Command {
   static args = [{ name: 'file' }]
 
   async run() {
-    const { args } = this.parse(Init);
-    const filepath: string = args.file || core.App.DefaultSettingsFilepath;
-    let settings = await cli.InitSettings(filepath, core.App.DefaultSettings)
-    console.log(settings);
+    // const { args } = this.parse(Init);
+    // const filepath: string = args.file || core.App.DefaultSettingsFilepath;
+    // let settings = await cli.InitSettings(filepath, core.App.DefaultSettings)
+    // console.log(settings);
   }
 }

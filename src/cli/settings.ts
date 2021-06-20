@@ -37,13 +37,12 @@ async function ReadSettings(ds: any) {
 export async function InitSettings<T extends Settings>(filepath: string, defaultSettings: T): Promise<T> {
   let settings: T = defaultSettings;
   try {
-    settings = await LoadSettings(filepath, settings);
     console.log('entry preference settings ...');
     settings = await ReadSettings(settings);
     await SaveSettings(settings, filepath);
 
   } catch {
-    console.log("something was wrong!");
+    console.log('init settings fail!');
   }
   return settings;
 }
@@ -52,13 +51,11 @@ export async function GetSettings<T extends Settings>(filepath: string, defaultS
   let settings: T = defaultSettings;
   try {
     settings = await LoadSettings(filepath, settings);
-    if (settings == defaultSettings) {
-      console.log('entry preference settings ...');
-      settings = await ReadSettings(settings);
-      await SaveSettings(settings, filepath);
+    if (settings === defaultSettings) {
+      settings = await InitSettings(filepath, settings);
     }
   } catch {
-    console.log("something was wrong!");
+    console.log('get settings fail!');
   }
   return settings;
 }

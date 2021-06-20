@@ -1,27 +1,52 @@
 import { Command, flags } from '@oclif/command';
-import * as mate from '../core';
+import * as core from '../core';
+import * as cli from '../cli';
 
 export default class Account extends Command {
+
   static description = 'list, create, update, login, logout or delete accounts';
+
+  static examples = [
+    'account --help"',
+    'account -c -p Exchange "Office mail"',
+    'account -l'
+  ];
 
   static flags = {
     help: flags.help({ char: 'h' }),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({ char: 'n', description: 'name to print' }),
-    // flag with no value (-f, --force)
-    force: flags.boolean({ char: 'f' }),
+    // flag with a value (-p, --provider=Mate)
+    provider: flags.string({
+      char: 'p',
+      description: 'account provider',
+      options: ['Mate', 'Exchange', 'Google'],
+      default: 'Mate'
+    }),
+    // create flag (-c, --create)
+    create: flags.boolean({
+      char: 'c',
+      description: 'create an account',
+      exclusive: ['list']
+    }),
+    // create flag (-l, --list)
+    list: flags.boolean({
+      char: 'l',
+      description: 'list all accounts that math with argument name'
+    })
   }
 
   static args = [{ name: 'name' }];
 
   async run() {
-    const { args, flags } = this.parse(Account);
+    const { args } = this.parse(Account);
     const name = args.name;
-    //   if (name) {
-    //     let settings = mate.cli.GetAppSettings();
-    //     let account = new mate.Account(name);
-    //     account.provider = mate.AccountProvider.Exchange;
-    //     account = mate.Account.create(account);
-    //   }
+
+    console.log('"Registro Personal"@Mate');
+    console.log('"Registro Oficina"@Mate');
+    console.log('"Correo Personal"@Google');
+    console.log('"Correo Italtel"@Exchange');
+    console.log('"Whatsapp Personal"@Whatsapp');
+    console.log('"Dropbox Personal"@Dropbox');
+    console.log('"Onedrive Italtel"@Onedrive');
+
   }
 }

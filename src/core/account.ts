@@ -1,7 +1,7 @@
 import * as Realm from "realm";
 import * as bson from 'bson';
 
-export enum AccountProvider {
+enum Provider {
   Mate = 0,
   Google,
   Outlook,
@@ -10,31 +10,34 @@ export enum AccountProvider {
   Yahoo,
   Exchange,
   Office365,
+  Drobox,
+  Github,
   Other
 }
 
 export class Account {
 
+  static schema = {
+    name: 'Account',
+    properties: {
+      _id: 'objectId',
+      provider: 'string',
+      name: 'string',
+      address: 'string?',
+      username: 'string?',
+      password: 'string?',
+      status: 'string?'
+    }
+  }
+
   _id?: bson.ObjectID;
-  provider: AccountProvider;
+  provider: Provider;
   name: string;
   address?: string;
   username?: string;
   password?: string;
   status?: string;
 
-  static schema = {
-    name: "EmailAccount",
-    properties: {
-      _id: "objectId",
-      provider: "string",
-      name: "string",
-      address: "string",
-      username: "string?",
-      password: "string?",
-      status: "string?"
-    }
-  }
 
   static async create(dbfilepath: string, account: Account): Promise<Account> {
     try {
@@ -54,8 +57,17 @@ export class Account {
   }
 
   constructor(name: string) {
-    this.provider = AccountProvider.Mate;
+    this.provider = Provider.Mate;
     this.name = name;
   }
 
+}
+
+interface DatabaseConfig {
+  path: string,
+  schema: [any]
+}
+
+export const RealmDBConfig: DatabaseConfig = {
+  path: 'accounts'
 }
