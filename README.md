@@ -42,9 +42,15 @@ USAGE
   $ mate account [NAME]
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -c, --create                         create an account
+  -h, --help                           show CLI help
+  -l, --list                           list all accounts that math with argument name
+  -p, --provider=Mate|Exchange|Google  [default: Mate] account provider
+
+EXAMPLES
+  account --help"
+  account -c -p Exchange "Office mail"
+  account -l
 ```
 
 _See code: [src/commands/account.ts](https://github.com/emadridm/mate/blob/v1.0.0/src/commands/account.ts)_
@@ -88,16 +94,14 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2
 
 ## `mate init [FILE]`
 
-describe the command here
+set up mate app
 
 ```
 USAGE
   $ mate init [FILE]
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/init.ts](https://github.com/emadridm/mate/blob/v1.0.0/src/commands/init.ts)_

@@ -1,4 +1,4 @@
-import { Settings, LoadSettings, SaveSettings } from '../core';
+import { Settings, LoadSettings, SaveSettings } from '../core/settings';
 import * as readline from 'readline';
 
 function EntryAppSetting(setting: string): Promise<string> {
